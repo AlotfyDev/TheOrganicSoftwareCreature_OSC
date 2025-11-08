@@ -1,0 +1,18 @@
+{
+  "mcpRules": {
+    "globalMemory": {
+      "servers": ["memory"],
+      "triggers": ["memory", "global", "remember", "recall"],
+      "description": "Global memory server for persistent knowledge across sessions"
+    },
+    "workspaceFilesystem": {
+      "servers": ["filesystem"],
+      "triggers": ["file", "workspace", "project", "code", "read", "write"],
+      "description": "Workspace-specific filesystem access for current project"
+    }
+  },
+  "defaultBehavior": {
+    "priorityOrder": ["workspaceFilesystem", "globalMemory"],
+    "fallbackBehavior": "Ask user which tool would be most appropriate"
+  }
+}

@@ -1,0 +1,174 @@
+digraph L2ValidationFlow {
+    // Graph attributes for biological validation theme
+    graph [
+        bgcolor="#fff8f0"
+        fontname="Arial"
+        fontsize="12"
+        label="L2 Cellular Membrane: Validation Flow with Static Analyzer Arrows"
+        labelloc="t"
+        fontcolor="#bf360c"
+        rankdir="TB"
+        nodesep="0.5"
+        ranksep="0.8"
+    ];
+
+    // Node attributes for validation checkpoints
+    node [
+        fontname="Arial"
+        fontsize="10"
+        shape="box"
+        style="filled,rounded"
+        penwidth="2"
+    ];
+
+    // Edge attributes for flow arrows
+    edge [
+        fontname="Arial"
+        fontsize="9"
+        penwidth="3"
+        arrowhead="normal"
+        arrowsize="1.2"
+    ];
+
+    // Start node
+    start [label="External Input\lReceived from\lExternal World"
+           fillcolor="#ffebee"
+           color="#d32f2f"
+           fontcolor="#b71c1c"
+           shape="ellipse"];
+
+    // Validation checkpoints
+    checkpoint1 [label="[Rule: Must be const after init]\lImmutable post-construction\lNo mutable references allowed"
+                 fillcolor="#fff3e0"
+                 color="#f57c00"
+                 fontcolor="#e65100"];
+
+    checkpoint2 [label="[Rule: No shared mutable refs]\lValue semantics only\lNo shared_ptr or references"
+                 fillcolor="#fff3e0"
+                 color="#f57c00"
+                 fontcolor="#e65100"];
+
+    checkpoint3 [label="[Rule: Validate type/range]\lType safety verification\lRange validation\lFormat checking"
+                 fillcolor="#fff3e0"
+                 color="#f57c00"
+                 fontcolor="#e65100"];
+
+    checkpoint4 [label="[Rule: Error handling per input]\lStructured error reporting\lInput-specific validation\lRecovery mechanisms"
+                 fillcolor="#fff3e0"
+                 color="#f57c00"
+                 fontcolor="#e65100"];
+
+    // Contextual defaults section
+    defaults_header [label="2. Contextual Defaults"
+                     fillcolor="#e8f5e8"
+                     color="#2e7d32"
+                     fontcolor="#1b5e20"
+                     shape="plaintext"];
+
+    checkpoint5 [label="[Rule: Must be const/read-only]\lImmutable default values\lThread-safe access\lFallback configurations"
+                 fillcolor="#e8f5e8"
+                 color="#4caf50"
+                 fontcolor="#2e7d32"];
+
+    checkpoint6 [label="[Rule: Thread-safe access]\lConcurrent read access\lNo synchronization needed\lLock-free by design"
+                 fillcolor="#e8f5e8"
+                 color="#4caf50"
+                 fontcolor="#2e7d32"];
+
+    checkpoint7 [label="[Rule: Validate consistency]\lCross-field validation\lLogical consistency\lConfiguration integrity"
+                 fillcolor="#e8f5e8"
+                 color="#4caf50"
+                 fontcolor="#2e7d32"];
+
+    // Constants/Enums section
+    constants_header [label="3. Constants / Enums"
+                      fillcolor="#e3f2fd"
+                      color="#1976d2"
+                      fontcolor="#0d47a1"
+                      shape="plaintext"];
+
+    checkpoint8 [label="[Rule: Must use enums/const]\lType-safe constants\lNo string literals\lCompile-time verification"
+                 fillcolor="#e3f2fd"
+                 color="#2196f3"
+                 fontcolor="#1976d2"];
+
+    checkpoint9 [label="[Rule: No mutable static state]\lImmutable static constants\lThread-safe initialization\lNo runtime mutation"
+                 fillcolor="#e3f2fd"
+                 color="#2196f3"
+                 fontcolor="#1976d2"];
+
+    checkpoint10 [label="[Rule: Validate symbolic mapping]\lEnum/string symmetry\lMapper function validation\lBoundary conversion safety"
+                  fillcolor="#e3f2fd"
+                  color="#2196f3"
+                  fontcolor="#1976d2"];
+
+    // End node
+    validated_output [label="Validated & Thread-Safe\lData Ready for L1\l[Rules applied before execution:]\l• No shared mutable state\l• Only const/thread-local inputs\l• No static mutable members"
+                      fillcolor="#f3e5f5"
+                      color="#7b1fa2"
+                      fontcolor="#4a148c"
+                      shape="ellipse"];
+
+    // Flow connections with validation arrows
+    start -> checkpoint1 [label="Input Flow" color="#d32f2f"];
+
+    checkpoint1 -> checkpoint2 [label="✓ Pass" color="#f57c00"];
+    checkpoint2 -> checkpoint3 [label="✓ Pass" color="#f57c00"];
+    checkpoint3 -> checkpoint4 [label="✓ Pass" color="#f57c00"];
+
+    checkpoint4 -> checkpoint5 [label="Contextual\nDefaults" color="#4caf50"];
+    checkpoint5 -> checkpoint6 [label="✓ Pass" color="#4caf50"];
+    checkpoint6 -> checkpoint7 [label="✓ Pass" color="#4caf50"];
+
+    checkpoint7 -> checkpoint8 [label="Constants/\nEnums" color="#2196f3"];
+    checkpoint8 -> checkpoint9 [label="✓ Pass" color="#2196f3"];
+    checkpoint9 -> checkpoint10 [label="✓ Pass" color="#2196f3"];
+
+    checkpoint10 -> validated_output [label="Feed validated &\nthread-safe values" color="#7b1fa2"];
+
+    // Error paths (dashed red lines)
+    checkpoint1 -> error1 [label="✗ Fail" style="dashed" color="#d32f2f" fontcolor="#d32f2f"];
+    checkpoint2 -> error2 [label="✗ Fail" style="dashed" color="#d32f2f" fontcolor="#d32f2f"];
+    checkpoint3 -> error3 [label="✗ Fail" style="dashed" color="#d32f2f" fontcolor="#d32f2f"];
+    checkpoint4 -> error4 [label="✗ Fail" style="dashed" color="#d32f2f" fontcolor="#d32f2f"];
+
+    // Error nodes (invisible to reduce clutter, but defined for completeness)
+    error1 [label="Validation Error" style="invis"];
+    error2 [label="Validation Error" style="invis"];
+    error3 [label="Validation Error" style="invis"];
+    error4 [label="Validation Error" style="invis"];
+
+    // Section groupings
+    subgraph cluster_inputs {
+        label="1. External Inputs";
+        style="filled";
+        fillcolor="#ffebee20";
+        color="#d32f2f";
+        start;
+    }
+
+    subgraph cluster_defaults {
+        label="2. Contextual Defaults";
+        style="filled";
+        fillcolor="#e8f5e820";
+        color="#2e7d32";
+        checkpoint5; checkpoint6; checkpoint7;
+    }
+
+    subgraph cluster_constants {
+        label="3. Constants / Enums";
+        style="filled";
+        fillcolor="#e3f2fd20";
+        color="#1976d2";
+        checkpoint8; checkpoint9; checkpoint10;
+    }
+
+    // Layout constraints
+    {rank=same; start;}
+    {rank=same; checkpoint1; checkpoint2;}
+    {rank=same; checkpoint3; checkpoint4;}
+    {rank=same; checkpoint5; checkpoint6;}
+    {rank=same; checkpoint7; checkpoint8;}
+    {rank=same; checkpoint9; checkpoint10;}
+    {rank=same; validated_output;}
+}

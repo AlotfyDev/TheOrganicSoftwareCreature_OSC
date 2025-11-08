@@ -1,0 +1,88 @@
+digraph BiologicalCreatureArchitecture {
+    // Graph attributes for biological theme
+    graph [
+        bgcolor="#f8f9fa"
+        fontname="Arial"
+        fontsize="12"
+        label="Multi-Tier Object: The Organic Software Creature"
+        labelloc="t"
+        fontcolor="#2c3e50"
+        rankdir="TB"
+        nodesep="0.8"
+        ranksep="1.2"
+    ];
+
+    // Node attributes for biological styling
+    node [
+        fontname="Arial"
+        fontsize="11"
+        shape="box"
+        style="filled,rounded"
+        gradientangle="270"
+    ];
+
+    // Edge attributes
+    edge [
+        fontname="Arial"
+        fontsize="9"
+        color="#34495e"
+        penwidth="2"
+    ];
+
+    // Layer 4: Conscious Mind (Top level - Executive)
+    L4 [label="L4: Conscious Mind\lOrchestration & Unified Behavior\l• Factory Methods\l• Error Aggregation\l• Component Ownership\l• API Design"
+         fillcolor="#e8f4f8:#a8d5e0"
+         color="#2e86ab"
+         fontcolor="#1e5f74"];
+
+    // Layer 3: Nervous System (Intelligence layer)
+    L3 [label="L3: Nervous System\lStateful Intelligence & Adaptation\l• Multiple Components\l• Atomic State Management\l• Business Logic\l• Validation & Error Handling"
+         fillcolor="#f0f9e8:#c8e6c9"
+         color="#4caf50"
+         fontcolor="#2e7d32"];
+
+    // Layer 2: Cellular Membrane (Boundary layer)
+    L2 [label="L2: Cellular Membrane\lData Contracts & Environmental Interface\l• Immutable DTOs\l• Enum Mappers\l• Validation Gates\l• Thread-Safe Boundaries"
+         fillcolor="#fff3e0:#ffcc80"
+         color="#ff9800"
+         fontcolor="#e65100"];
+
+    // Layer 1: Genetic Code (Foundation layer)
+    L1 [label="L1: Genetic Code\lPure Algorithmic DNA & Transformations\l• Stateless Functions\l• Mathematical Purity\l• Deterministic Output\l• Lock-Free Operations"
+         fillcolor="#fce4ec:#f8bbd9"
+         color="#e91e63"
+         fontcolor="#880e4f"];
+
+    // Biological relationships (DNA inheritance)
+    L4 -> L3 [label="owns by value" color="#2e86ab" fontcolor="#2e86ab"];
+    L3 -> L2 [label="receives DTOs" color="#4caf50" fontcolor="#4caf50"];
+    L2 -> L1 [label="feeds validated data" color="#ff9800" fontcolor="#ff9800"];
+
+    // Concurrency DNA inheritance visualization
+    concurrency_dna [label="Concurrency DNA Inheritance\lL1→L2→L3→L4\lZero Contention → Linear Scalability"
+                     shape="note"
+                     fillcolor="#f3e5f5:#ce93d8"
+                     color="#7b1fa2"
+                     fontcolor="#4a148c"];
+
+    // Connect concurrency DNA to layers
+    concurrency_dna -> L1 [style="dashed" color="#7b1fa2"];
+    concurrency_dna -> L2 [style="dashed" color="#7b1fa2"];
+    concurrency_dna -> L3 [style="dashed" color="#7b1fa2"];
+    concurrency_dna -> L4 [style="dashed" color="#7b1fa2"];
+
+    // Biological metaphor legend
+    legend [label="Biological Metaphor:\l• L1: Genetic Code (DNA)\l• L2: Cellular Membrane (Boundary)\l• L3: Nervous System (Intelligence)\l• L4: Conscious Mind (Executive)"
+            shape="box"
+            style="filled"
+            fillcolor="#ffffff"
+            color="#616161"
+            fontcolor="#424242"];
+
+    // Layout constraints
+    {rank=same; L4;}
+    {rank=same; L3;}
+    {rank=same; L2;}
+    {rank=same; L1;}
+    {rank=same; concurrency_dna; legend;}
+}

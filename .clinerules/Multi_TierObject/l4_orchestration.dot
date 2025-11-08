@@ -1,0 +1,179 @@
+digraph L4Orchestration {
+    // Graph attributes for orchestration theme
+    graph [
+        bgcolor="#e8f4f8"
+        fontname="Arial"
+        fontsize="12"
+        label="L4 Conscious Mind: Orchestration & Unified Behavior"
+        labelloc="t"
+        fontcolor="#2e86ab"
+        rankdir="TB"
+        nodesep="0.7"
+        ranksep="1.0"
+    ];
+
+    // Node attributes for orchestration components
+    node [
+        fontname="Arial"
+        fontsize="10"
+        shape="box"
+        style="filled,rounded"
+        penwidth="2"
+    ];
+
+    // Edge attributes for orchestration flow
+    edge [
+        fontname="Arial"
+        fontsize="9"
+        penwidth="2"
+        arrowhead="normal"
+    ];
+
+    // External API input
+    api_input [label="External API Call\lUser Request\lSystem Integration"
+               fillcolor="#ffebee"
+               color="#d32f2f"
+               fontcolor="#b71c1c"
+               shape="ellipse"];
+
+    // L4 Conscious Mind (orchestrator)
+    conscious_mind [label="L4: Conscious Mind\lOrchestration Layer\l• Factory Methods\l• Error Aggregation\l• Component Ownership\l• API Design"
+                    fillcolor="#e8f4f8"
+                    color="#2e86ab"
+                    fontcolor="#1e5f74"];
+
+    // Validation gate
+    validation_gate [label="[R3] Validate API input\lbefore passing to L3\lInput sanitization\lParameter validation\lSecurity checks"
+                     fillcolor="#fff3e0"
+                     color="#f57c00"
+                     fontcolor="#e65100"];
+
+    // L3 components owned by L4
+    l3_components [label="L3 Components\l(Owned by L4)\l• Cognitive Center\l• Behavioral Center\l• Adaptive Center\l• Independent stateful components"
+                   fillcolor="#e8f5e8"
+                   color="#4caf50"
+                   fontcolor="#2e7d32"
+                   shape="cylinder"];
+
+    // Individual L3 centers
+    cognitive_center [label="Cognitive Center\lReasoning & Logic\lAtomic state management"
+                      fillcolor="#f1f8e9"
+                      color="#66bb6a"
+                      fontcolor="#388e3c"];
+
+    behavioral_center [label="Behavioral Center\lActions & Responses\lIndependent validation"
+                       fillcolor="#f1f8e9"
+                       color="#66bb6a"
+                       fontcolor="#388e3c"];
+
+    adaptive_center [label="Adaptive Center\lLearning & Adaptation\lComponent-specific rules"
+                     fillcolor="#f1f8e9"
+                     color="#66bb6a"
+                     fontcolor="#388e3c"];
+
+    // Processing coordination
+    coordination_engine [label="Coordination Engine\l• Orchestrate L3 calls\l• Aggregate responses\l• Handle errors\l• Maintain unified state"
+                         fillcolor="#f3e5f5"
+                         color="#7b1fa2"
+                         fontcolor="#4a148c"];
+
+    // Error aggregation
+    error_aggregator [label="Error Aggregator\l• Collect L3 errors\l• Thread-local storage\l• Unified error reporting\l• Recovery coordination"
+                      fillcolor="#ffebee"
+                      color="#ef5350"
+                      fontcolor="#c62828"];
+
+    // Final response
+    unified_response [label="Unified API Response\lCoordinated Results\lError Handling\lConsistent Interface"
+                      fillcolor="#e8f4f8"
+                      color="#2e86ab"
+                      fontcolor="#1e5f74"
+                      shape="ellipse"];
+
+    // Factory methods
+    factory_minimal [label="Factory: Minimal\lcreateMinimalOrganism()\lBasic configuration\lEssential components"
+                     fillcolor="#e1f5fe"
+                     color="#0277bd"
+                     fontcolor="#01579b"];
+
+    factory_adaptive [label="Factory: Adaptive\lcreateAdaptiveOrganism()\lContext-aware creation\lAdvanced configuration"
+                      fillcolor="#e1f5fe"
+                      color="#0277bd"
+                      fontcolor="#01579b"];
+
+    // Flow connections
+    api_input -> conscious_mind [label="API Request" color="#d32f2f"];
+
+    conscious_mind -> validation_gate [label="[R3] Validate" color="#f57c00"];
+
+    validation_gate -> l3_components [label="Validated Input" color="#4caf50"];
+
+    l3_components -> cognitive_center [label="Delegate" color="#66bb6a"];
+    l3_components -> behavioral_center [label="Delegate" color="#66bb6a"];
+    l3_components -> adaptive_center [label="Delegate" color="#66bb6a"];
+
+    cognitive_center -> coordination_engine [label="Cognitive Results" color="#7b1fa2"];
+    behavioral_center -> coordination_engine [label="Behavioral Results" color="#7b1fa2"];
+    adaptive_center -> coordination_engine [label="Adaptive Results" color="#7b1fa2"];
+
+    coordination_engine -> unified_response [label="Coordinated Response" color="#2e86ab"];
+
+    // Error handling flows
+    cognitive_center -> error_aggregator [label="Errors" style="dashed" color="#ef5350"];
+    behavioral_center -> error_aggregator [label="Errors" style="dashed" color="#ef5350"];
+    adaptive_center -> error_aggregator [label="Errors" style="dashed" color="#ef5350"];
+
+    error_aggregator -> coordination_engine [label="Aggregated Errors" color="#ef5350"];
+
+    // Factory connections
+    conscious_mind -> factory_minimal [label="Create" style="dotted" color="#0277bd"];
+    conscious_mind -> factory_adaptive [label="Create" style="dotted" color="#0277bd"];
+
+    factory_minimal -> conscious_mind [label="Return Instance" style="dotted" color="#0277bd"];
+    factory_adaptive -> conscious_mind [label="Return Instance" style="dotted" color="#0277bd"];
+
+    // Ownership visualization
+    ownership [label="Ownership Model\lL4 owns L3 by value\l[R1] No shared mutable state\l[R2] Complete isolation\lComposition guarantees"
+               shape="note"
+               fillcolor="#ffffff"
+               color="#616161"
+               fontcolor="#424242"];
+
+    conscious_mind -> ownership [style="dashed" color="#616161"];
+
+    // Layout constraints
+    {rank=same; api_input;}
+    {rank=same; conscious_mind;}
+    {rank=same; validation_gate;}
+    {rank=same; l3_components;}
+    {rank=same; cognitive_center; behavioral_center; adaptive_center;}
+    {rank=same; coordination_engine; error_aggregator;}
+    {rank=same; unified_response;}
+    {rank=same; factory_minimal; factory_adaptive;}
+    {rank=same; ownership;}
+
+    // Subgraph groupings
+    subgraph cluster_factories {
+        label="Factory Methods";
+        style="filled";
+        fillcolor="#e1f5fe20";
+        color="#0277bd";
+        factory_minimal; factory_adaptive;
+    }
+
+    subgraph cluster_l3_centers {
+        label="L3 Neural Centers (Owned by L4)";
+        style="filled";
+        fillcolor="#e8f5e820";
+        color="#4caf50";
+        cognitive_center; behavioral_center; adaptive_center;
+    }
+
+    subgraph cluster_orchestration {
+        label="L4 Orchestration Engine";
+        style="filled";
+        fillcolor="#e8f4f820";
+        color="#2e86ab";
+        coordination_engine; error_aggregator;
+    }
+}

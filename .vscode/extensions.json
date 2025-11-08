@@ -1,0 +1,22 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools",
+        "ms-vscode.vscode-typescript-next",
+        "ms-vscode.js-debug",
+        "formulahendry.code-runner",
+        "xaverhellmann.clang-format",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "EFanZh.graphviz-preview",
+        "shd101wyy.markdown-preview-enhanced",
+        "ms-vscode.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-wsl",
+        "ms-vscode.remote-explorer",
+        "donjayamanne.githistory",
+        "esbenp.prettier-vscode"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.vscode-js-profile-flame-chart"
+    ]
+}

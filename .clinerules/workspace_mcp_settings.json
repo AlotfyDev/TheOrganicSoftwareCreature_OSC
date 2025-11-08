@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "_comment": "Workspace-level MCP servers for DateTimeParser project",
+    "_description": "This file contains MCP servers specific to the current workspace",
+    "_note": "These servers are in addition to the user-level servers in D:\\Cline\\settings\\cline_mcp_settings.json",
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "d:/PythonTrader/MQL5AST/SSDDS"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

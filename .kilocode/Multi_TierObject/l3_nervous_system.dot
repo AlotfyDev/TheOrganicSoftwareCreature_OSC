@@ -1,0 +1,165 @@
+digraph L3NervousSystem {
+    // Graph attributes for neural network theme
+    graph [
+        bgcolor="#f0f4f0"
+        fontname="Arial"
+        fontsize="12"
+        label="L3 Nervous System: Multi-Component Neural Architecture"
+        labelloc="t"
+        fontcolor="#2e7d32"
+        rankdir="TB"
+        nodesep="0.6"
+        ranksep="1.0"
+    ];
+
+    // Node attributes for neural components
+    node [
+        fontname="Arial"
+        fontsize="10"
+        shape="box"
+        style="filled,rounded"
+        penwidth="2"
+    ];
+
+    // Edge attributes for neural connections
+    edge [
+        fontname="Arial"
+        fontsize="9"
+        penwidth="2"
+        arrowhead="normal"
+    ];
+
+    // Input from L2
+    l2_input [label="L2: DTOs\lConfig Params\lOptional Defaults\lEnums/Constants"
+              fillcolor="#fff3e0"
+              color="#ff9800"
+              fontcolor="#e65100"
+              shape="folder"];
+
+    // Neural processing centers (independent components)
+    cognitive_center [label="Cognitive Center\l• State: Reasoning\l• Validators: Logic coherence\l• Errors: Cognitive faults\l• Atomic state management"
+                      fillcolor="#e8f5e8"
+                      color="#4caf50"
+                      fontcolor="#2e7d32"];
+
+    behavioral_center [label="Behavioral Center\l• State: Actions\l• Validators: Action safety\l• Errors: Behavioral conflicts\l• Independent validation"
+                       fillcolor="#e8f5e8"
+                       color="#4caf50"
+                       fontcolor="#2e7d32"];
+
+    adaptive_center [label="Adaptive Center\l• State: Learning\l• Validators: Pattern recognition\l• Errors: Adaptation failures\l• Component-specific rules"
+                     fillcolor="#e8f5e8"
+                     color="#4caf50"
+                     fontcolor="#2e7d32"];
+
+    // Neural center details (sub-components)
+    cognitive_validator [label="Component Validator\lLogic Coherence\lPattern Recognition"
+                         fillcolor="#f1f8e9"
+                         color="#66bb6a"
+                         fontcolor="#388e3c"
+                         shape="ellipse"];
+
+    cognitive_error [label="Error Handler\lCognitive Faults\lRecovery Mechanisms"
+                     fillcolor="#ffebee"
+                     color="#ef5350"
+                     fontcolor="#c62828"
+                     shape="diamond"];
+
+    behavioral_validator [label="Component Validator\lAction Safety\lBehavioral Constraints"
+                          fillcolor="#f1f8e9"
+                          color="#66bb6a"
+                          fontcolor="#388e3c"
+                          shape="ellipse"];
+
+    behavioral_error [label="Error Handler\lBehavioral Conflicts\lAction Recovery"
+                      fillcolor="#ffebee"
+                      color="#ef5350"
+                      fontcolor="#c62828"
+                      shape="diamond"];
+
+    adaptive_validator [label="Component Validator\lPattern Recognition\lLearning Validation"
+                        fillcolor="#f1f8e9"
+                        color="#66bb6a"
+                        fontcolor="#388e3c"
+                        shape="ellipse"];
+
+    adaptive_error [label="Error Handler\lAdaptation Failures\lLearning Recovery"
+                    fillcolor="#ffebee"
+                    color="#ef5350"
+                    fontcolor="#c62828"
+                    shape="diamond"];
+
+    // L1 Genetic Code (pure functions)
+    l1_genetic [label="L1: Genetic Code\lPure Algorithmic Functions\lStateless Transformations\lLock-free Operations"
+                fillcolor="#fce4ec"
+                color="#e91e63"
+                fontcolor="#880e4f"];
+
+    // Processing flow
+    l2_input -> cognitive_center [label="DTOs" color="#ff9800"];
+    l2_input -> behavioral_center [label="DTOs" color="#ff9800"];
+    l2_input -> adaptive_center [label="DTOs" color="#ff9800"];
+
+    // Internal component connections
+    cognitive_center -> cognitive_validator [label="Validate" color="#4caf50"];
+    cognitive_validator -> l1_genetic [label="Call Pure Functions" color="#e91e63"];
+    l1_genetic -> cognitive_center [label="Results" color="#e91e63"];
+
+    behavioral_center -> behavioral_validator [label="Validate" color="#4caf50"];
+    behavioral_validator -> l1_genetic [label="Call Pure Functions" color="#e91e63"];
+    l1_genetic -> behavioral_center [label="Results" color="#e91e63"];
+
+    adaptive_center -> adaptive_validator [label="Validate" color="#4caf50"];
+    adaptive_validator -> l1_genetic [label="Call Pure Functions" color="#e91e63"];
+    l1_genetic -> adaptive_center [label="Results" color="#e91e63"];
+
+    // Error handling connections
+    cognitive_validator -> cognitive_error [label="Validation Fail" style="dashed" color="#ef5350"];
+    behavioral_validator -> behavioral_error [label="Validation Fail" style="dashed" color="#ef5350"];
+    adaptive_validator -> adaptive_error [label="Validation Fail" style="dashed" color="#ef5350"];
+
+    // Coordination framework
+    coordination [label="Neural Coordination Framework\l• No shared mutable state\l• Pure L1 calls only\l• Component-specific validators\l• Atomic state transitions\l• Error containment per center\l• Independent lifecycles"
+                  shape="note"
+                  fillcolor="#f3e5f5"
+                  color="#7b1fa2"
+                  fontcolor="#4a148c"];
+
+    // Connect coordination to centers
+    coordination -> cognitive_center [style="dotted" color="#7b1fa2"];
+    coordination -> behavioral_center [style="dotted" color="#7b1fa2"];
+    coordination -> adaptive_center [style="dotted" color="#7b1fa2"];
+
+    // Layout constraints
+    {rank=same; l2_input;}
+    {rank=same; cognitive_center; behavioral_center; adaptive_center;}
+    {rank=same; cognitive_validator; behavioral_validator; adaptive_validator;}
+    {rank=same; cognitive_error; behavioral_error; adaptive_error;}
+    {rank=same; l1_genetic;}
+    {rank=same; coordination;}
+
+    // Subgraph for component grouping
+    subgraph cluster_cognitive {
+        label="Cognitive Neural Center";
+        style="filled";
+        fillcolor="#e8f5e820";
+        color="#4caf50";
+        cognitive_center; cognitive_validator; cognitive_error;
+    }
+
+    subgraph cluster_behavioral {
+        label="Behavioral Neural Center";
+        style="filled";
+        fillcolor="#e8f5e820";
+        color="#4caf50";
+        behavioral_center; behavioral_validator; behavioral_error;
+    }
+
+    subgraph cluster_adaptive {
+        label="Adaptive Neural Center";
+        style="filled";
+        fillcolor="#e8f5e820";
+        color="#4caf50";
+        adaptive_center; adaptive_validator; adaptive_error;
+    }
+}
