@@ -6,6 +6,23 @@
 
 This repository contains the reference implementation and documentation for **The Organic Software Creature**, a universal meta-pattern for software architecture. It provides a framework for designing individual software objects as complete, self-contained "creatures" with a robust internal, four-layer biological structure.
 
+## Table of Contents
+
+- [The Organic Software Creature: A Universal Meta-Pattern Framework](#the-organic-software-creature-a-universal-meta-pattern-framework)
+  - [Table of Contents](#table-of-contents)
+  - [Abstract: The "Why"](#abstract-the-why)
+  - [The Core Concept: The Four Layers of a Software Creature](#the-core-concept-the-four-layers-of-a-software-creature)
+    - [🧬 L1: Genetic Code (Pure Algorithmic DNA)](#-l1-genetic-code-pure-algorithmic-dna)
+    - [🛡️ L2: Cellular Membrane (Immutable Data Contracts)](#️-l2-cellular-membrane-immutable-data-contracts)
+    - [🧠 L3: Nervous System (Stateful Intelligence)](#-l3-nervous-system-stateful-intelligence)
+    - [👁️ L4: Conscious Mind (Orchestration \& Unified Behavior)](#️-l4-conscious-mind-orchestration--unified-behavior)
+  - [Visualizing the Architecture](#visualizing-the-architecture)
+  - [The Framework: From Theory to Reality](#the-framework-from-theory-to-reality)
+    - [Getting Started (The Vision)](#getting-started-the-vision)
+  - [Project Roadmap](#project-roadmap)
+  - [How to Contribute](#how-to-contribute)
+  - [License](#license)
+
 ### Abstract: The "Why"
 
 While software engineering has excelled at defining relationships *between* objects (e.g., Factory, Observer, Strategy), it has largely neglected the internal architecture of the objects themselves. This meta-pattern addresses that gap.
@@ -65,7 +82,7 @@ The goal is a simple, powerful workflow:
 
 ### Project Roadmap
 
-This project is currently in the foundational scaffolding phase. For a detailed plan of upcoming features and the path to a production-ready version, please see the **[Framework Roadmap](./Documentation/Framework_Roadmap.md)**.
+This project is currently in the foundational scaffolding phase. For a detailed plan of upcoming features and the path to a production-ready version, please see the **[Framework Roadmap](./Documentation/ROADMAP.md)**.
 
 ### How to Contribute
 
